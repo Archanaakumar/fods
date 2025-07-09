@@ -1,0 +1,19 @@
+import numpy as np
+n = int(input("Enter number of houses: "))
+print("Enter data for each house as: Bedrooms SqFt SalePrice")
+
+house_data = []
+for i in range(n):
+    row = list(map(float, input(f"House {i+1}: ").split()))
+    if len(row) != 3:
+        print("Please enter exactly 3 values (Bedrooms, SqFt, SalePrice).")
+        exit()
+    house_data.append(row)
+
+house_data = np.array(house_data)
+filtered = house_data[house_data[:, 0] > 4]
+if filtered.size == 0:
+    print("No houses with more than 4 bedrooms.")
+else:
+    avg_price = np.mean(filtered[:, 2])
+    print("\nAverage sale price of houses with more than 4 bedrooms:", round(avg_price, 2))
