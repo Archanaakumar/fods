@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+sales = [1200, 1500, 1700, 1600, 1800, 2000]
+
+# Line Plot
+plt.figure(figsize=(6, 4))
+plt.plot(months, sales)
+plt.title('Monthly Sales - Line Plot')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.tight_layout()
+plt.show()
+
+# Scatter Plot
+plt.figure(figsize=(6, 4))
+plt.scatter(months, sales)
+plt.title('Monthly Sales - Scatter Plot')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.tight_layout()
+plt.show()
+
+#Bar Plot
+plt.figure(figsize=(6, 4))
+plt.bar(months, sales)
+plt.title('Monthly Sales - Bar Plot')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.tight_layout()
+plt.show()
