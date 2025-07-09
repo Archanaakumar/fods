@@ -1,0 +1,16 @@
+import numpy as np
+rows = int(input("Enter number of products (rows): "))
+cols = int(input("Enter number of sales per product (columns): "))
+print(f"Enter sales prices row by row ({rows} rows, {cols} values each):")
+sales_data = []
+
+for i in range(rows):
+    row = list(map(float, input(f"Enter prices for Product {i+1}: ").split()))
+    if len(row) != cols:
+        print("Incorrect number of values! Try again.")
+        exit()
+    sales_data.append(row)
+sales_array = np.array(sales_data)
+average_price = np.mean(sales_array)
+print("\nSales Data:\n", sales_array)
+print("Average price of all products sold:", round(average_price, 2))
