@@ -1,0 +1,16 @@
+import numpy as np
+n = int(input("Enter number of quarters (typically 4): "))
+sales = list(map(float, input(f"Enter sales for {n} quarters (space-separated): ").split()))
+if len(sales) != n:
+    print(f"Error: Expected {n} values, but got {len(sales)}.")
+    exit()
+sales_data = np.array(sales)
+total_sales = np.sum(sales_data)
+
+if sales_data[0] == 0:
+    percent_increase = "Undefined (Q1 sales is 0)"
+else:
+    percent_increase = ((sales_data[3] - sales_data[0]) / sales_data[0]) * 100
+
+print("\nTotal sales for the year:", round(total_sales, 2))
+print("Percentage increase from Q1 to Q4:", percent_increase if isinstance(percent_increase, str) else f"{percent_increase:.2f}%")
