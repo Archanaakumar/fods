@@ -1,0 +1,18 @@
+import pandas as pd
+df = pd.read_csv('customer_data.csv')
+quantiles = df['Total Spending'].quantile([0.33, 0.67])
+df['Spending Segment'] = pd.cut(df['Total Spending'], bins=[-1, quantiles[0.33], quantiles[0.67], float('inf')],
+                               labels=['Low Spenders', 'Medium Spenders', 'High Spenders'])
+avg_age = df.groupby('Spending Segment')['Age'].mean()
+print("Customer Segmentation:")
+print(df[['Customer ID', 'Spending Segment']])
+print("\nAverage Age per Spending Segment:")
+print(avg_age)
+print("\nData Quality Checks:")
+df.info()
+print("\nMissing Values:")
+print(df.isna().sum())
+print("\nGender Distribution:")
+print(df['Gender'].value_counts())
+print("\nSpending Segment Statistics:")
+print(df.groupby('Spending Segment', observed=True)['Total Spending'].agg(['mean', 'median', 'std']))
