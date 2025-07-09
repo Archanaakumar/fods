@@ -1,0 +1,18 @@
+import numpy as np
+n = int(input("Enter number of students: "))
+student_scores = []
+
+print("Enter marks in order: Math, Science, English, History")
+for i in range(n):
+    scores = list(map(float, input(f"Enter scores for student {i+1}: ").split()))
+    student_scores.append(scores)
+student_scores = np.array(student_scores)
+average_scores = np.mean(student_scores, axis=0)
+subjects = ['Math', 'Science', 'English', 'History']
+highest_avg_index = np.argmax(average_scores)
+highest_avg_subject = subjects[highest_avg_index]
+print("\nAverage scores per subject:")
+for i, avg in enumerate(average_scores):
+    print(f"{subjects[i]}: {avg:.2f}")
+
+print("\nSubject with highest average score:", highest_avg_subject)
