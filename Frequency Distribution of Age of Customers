@@ -1,0 +1,14 @@
+import pandas as pd
+
+n = int(input("Enter number of customers: "))
+ages = []
+
+for i in range(n):
+    age = int(input(f"Enter age of customer {i+1}: "))
+    ages.append(age)
+
+df = pd.DataFrame({'Age': ages})
+frequency = df['Age'].value_counts()
+
+print("\nFrequency distribution of customer ages:")
+print(frequency)
