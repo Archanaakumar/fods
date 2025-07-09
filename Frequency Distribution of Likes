@@ -1,0 +1,14 @@
+import pandas as pd
+
+n = int(input("Enter the number of posts: "))
+likes = []
+
+for i in range(n):
+    like = int(input(f"Enter number of likes for post {i+1}: "))
+    likes.append(like)
+
+df = pd.DataFrame({'Likes': likes})
+frequency = df['Likes'].value_counts()
+
+print("\nFrequency distribution of likes among posts:")
+print(frequency)
