@@ -1,0 +1,26 @@
+import numpy as np
+n = int(input("Enter the number of car models: "))
+fuel_values = list(map(float, input(f"Enter fuel efficiency (mpg) for {n} car models: ").split()))
+if len(fuel_values) != n:
+    print(f"Error: Expected {n} values, got {len(fuel_values)}.")
+    exit()
+
+fuel_efficiency = np.array(fuel_values)
+average_efficiency = np.mean(fuel_efficiency)
+
+print(f"\nEnter the indices (0 to {n-1}) of two car models to compare:")
+i = int(input("Model 1 index: "))
+j = int(input("Model 2 index: "))
+
+if not (0 <= i < n and 0 <= j < n):
+    print("Invalid indices entered.")
+    exit()
+if fuel_efficiency[i] == 0:
+    improvement = "Undefined (Model 1 has 0 mpg)"
+else:
+    improvement = ((fuel_efficiency[j] - fuel_efficiency[i]) / fuel_efficiency[i]) * 100
+
+print("\nAverage fuel efficiency:", round(average_efficiency, 2), "mpg")
+print(f"Fuel efficiency of Model {i}: {fuel_efficiency[i]} mpg")
+print(f"Fuel efficiency of Model {j}: {fuel_efficiency[j]} mpg")
+print("Percentage improvement:", improvement if isinstance(improvement, str) else f"{improvement:.2f}%")
