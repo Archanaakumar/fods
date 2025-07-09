@@ -1,0 +1,14 @@
+prices = list(map(float, input("Enter item prices: ").split()))
+quantities = list(map(int, input("Enter item quantities: ").split()))
+discount_rate = float(input("Enter discount rate (%): "))
+tax_rate = float(input("Enter tax rate (%): "))
+
+subtotal = sum(p * q for p, q in zip(prices, quantities))
+discount = (discount_rate / 100) * subtotal
+tax = (tax_rate / 100) * (subtotal - discount)
+total = subtotal - discount + tax
+
+print(f"Subtotal: {subtotal:.2f}")
+print(f"Discount: {discount:.2f}")
+print(f"Tax: {tax:.2f}")
+print(f"Total cost: {total:.2f}")
